@@ -20,7 +20,7 @@ yarn add @truefit/bach-rn-elements
 
 ### ThemeProvider
 
-### Theme Reducer
+### createThemeReducer
 
 ## Enhancers
 
