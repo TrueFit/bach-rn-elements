@@ -1,6 +1,6 @@
 import {SET_ACTIVE_THEME} from '../actions';
 
-export default (state = null, action) => {
+export default initialTheme => (state = initialTheme, action) => {
   if (action.type === SET_ACTIVE_THEME) {
     return action.payload;
   }

@@ -1,6 +1,6 @@
 {
   "name": "@truefit/bach-rn-elements",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "compose your react native elements based components in style",
   "main": "lib/index.js",
   "scripts": {
