@@ -1,0 +1,48 @@
+{
+  "name": "@truefit/bach-rn-elements",
+  "version": "0.0.1",
+  "description": "compose your react native elements based components in style",
+  "main": "lib/index.js",
+  "scripts": {
+    "compile": "node tools/build.js",
+    "prepare": "npm run compile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:TrueFit/bach-rn-elements.git"
+  },
+  "author": "Josh Gretz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TrueFit/bach-rn-elements/issues"
+  },
+  "browserslist": [
+    "defaults"
+  ],
+  "homepage": "https://github.com/TrueFit/bach-rn-elements#readme",
+  "dependencies": {
+    "@truefit/bach": "^1.0.10",
+    "@truefit/bach-redux": "^1.0.1",
+    "react-native-elements": "^1.1.0",
+    "react-native-vector-icons": "^6.6.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.0",
+    "@babel/core": "^7.5.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.5.1",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/preset-env": "^7.5.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.2",
+    "eslint": "^6.0.1",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-react": "^7.14.2",
+    "eslint-plugin-react-hooks": "^1.6.1",
+    "nodemon": "^1.19.1",
+    "prettier": "^1.18.2",
+    "react": "^16.8.6",
+    "react-native": "0.59.9",
+    "shelljs": "^0.8.3"
+  }
+}
