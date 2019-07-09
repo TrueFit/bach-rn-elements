@@ -1,8 +1,8 @@
 import {createSelector} from 'reselect';
-import activeThemeNameSelector from './activeThemeNameSelector.js';
+import themeNameSelector from './themeNameSelector';
 import {styleConfig} from '../util/configureStyle';
 
 export default createSelector(
-  activeThemeNameSelector,
-  activeThemeName => styleConfig.themes[activeThemeName],
+  themeNameSelector,
+  themeName => styleConfig.themes[themeName],
 );
