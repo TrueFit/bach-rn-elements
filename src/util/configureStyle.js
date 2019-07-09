@@ -1,7 +1,9 @@
 export let styleConfig = {
   defaultStyle: {},
-  themes: {},
-  initialTheme: '',
+  themes: {
+    BLANK: {},
+  },
+  initialTheme: 'BLANK',
 };
 
 export default (config = {}) => {
