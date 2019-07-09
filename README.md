@@ -16,19 +16,21 @@ yarn add @truefit/bach-rn-elements
 
 ## Setup
 
-The setup for this library is a little more involved than most enhancer packages due to the integration with the UI. There are a couple of critical pieces you need to have in place, but if the steps below are followed, app level theming and individual component styling can both be accomplished with ease and clarity.
+The setup for this library is a little more involved than other enhancer packages due to the integration with the UI. There are a couple of critical pieces you need to have in place, but if the steps below are followed, both app level theming and individual component styling can be accomplished with ease and clarity.
 
 ### configureStyle
 
-_This configuration method needs to be called prior to the creation of the themeReducer_
+**This configuration method needs to be called prior to the creation of the themeReducer**
 
-This function allows you to provide your configuration of themes and styles. This function is invoked with the configuration object detailed below. For further information on theming with react-native-elements please see their [documentation](https://react-native-training.github.io/react-native-elements/docs/customization.html)
+This function allows you to provide your configuration of themes and styles. This function is invoked with the configuration object detailed below:
 
 | Parameter    | Type              | Description                                                       |
 | ------------ | ----------------- | ----------------------------------------------------------------- |
 | defaultStyle | js object         | the styles that should be available to every component            |
 | themes       | js object         | the themes map that you are providing for the app                 |
 | initialTheme | string (optional) | the key in themes object for the initial theme the app should use |
+
+For further information on theming with react-native-elements, please see their [documentation](https://react-native-training.github.io/react-native-elements/docs/customization.html)
 
 _Example_
 
@@ -82,7 +84,7 @@ configureStyle({
 
 ### ThemeProvider
 
-This component wraps the ThemeProvider provided by react-native-elements. You can read more about the need for this component in this [comment](https://github.com/TrueFit/bach-rn-elements/blob/master/src/components/themeProvider.js).
+This component wraps the [ThemeProvider](https://react-native-training.github.io/react-native-elements/docs/customization.html#using-themeprovider) provided by react-native-elements.
 
 This component should wrap your root app component (typically directly inside of the redux provider).
 
@@ -107,7 +109,7 @@ export default class App extends React.Component {
 
 ### Redux Tie-In
 
-This library uses redux to store the name of the active theme. It follows the standard action creator -> action -> reducer paradigm. In addition, we also provide reselect selectors to provide easy access to the store values.
+This library uses redux to store the name of the active theme. It follows the standard action creator -> action -> reducer paradigm. In addition, we also provide [reselect](https://github.com/reduxjs/reselect) selectors to provide easy access to the store values.
 
 #### setActiveTheme
 
@@ -121,7 +123,7 @@ This is the action creator. It has the following signature:
 
 This reducer keeps track of the active theme name.
 
-_This reducer needs to be added to your root reducer configuration at the key: theme_
+**This reducer needs to be added to your root reducer configuration at the key: theme**
 
 ```
 import {combineReducers} from 'redux';
