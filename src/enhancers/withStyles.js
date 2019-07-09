@@ -3,7 +3,7 @@ import {PROPS, generateConditionCode, isFunction} from '@truefit/bach';
 
 import {ThemeContext} from '../components/themeProvider';
 
-import {styleContext} from '../util';
+import {styleConfig} from '../util/configureStyle';
 import {STYLES, THEME} from '../constants';
 
 export default (
@@ -20,11 +20,11 @@ export default (
 
   const logic = props => {
     const resolvedStyles = isFuncStyles
-      ? componentStyles(props, styleContext.defaultStyle)
+      ? componentStyles(props, styleConfig.defaultStyle)
       : componentStyles;
 
     return {
-      ...styleContext.defaultStyle,
+      ...styleConfig.defaultStyle,
       ...resolvedStyles,
     };
   };

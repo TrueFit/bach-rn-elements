@@ -1,7 +1,9 @@
-export const styleContext = {
+export let styleConfig = {
   defaultStyle: {},
+  themes: {},
+  activeTheme: '',
 };
 
-export default defaultStyle => {
-  styleContext.defaultStyle = defaultStyle;
+export default (config = {}) => {
+  styleConfig = {...styleConfig, ...config};
 };

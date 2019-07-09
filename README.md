@@ -22,6 +22,8 @@ yarn add @truefit/bach-rn-elements
 
 ### createThemeReducer
 
+### themeSelector
+
 ## Enhancers
 
 ### withStyles

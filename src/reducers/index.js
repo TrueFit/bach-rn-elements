@@ -1,1 +1,1 @@
-export {default as createThemeReducer} from './createThemeReducer';
+export {default as themeReducer} from './themeReducer';

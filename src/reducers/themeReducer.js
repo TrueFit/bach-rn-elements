@@ -1,6 +1,7 @@
 import {SET_ACTIVE_THEME} from '../actions';
+import {styleConfig} from '../util/configureStyle';
 
-export default initialTheme => (state = initialTheme, action) => {
+export default (state = styleConfig.activeTheme, action) => {
   if (action.type === SET_ACTIVE_THEME) {
     return action.payload;
   }
