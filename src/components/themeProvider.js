@@ -16,6 +16,7 @@ import {themeSelector} from '../selectors';
 
 export const ThemeContext = React.createContext({theme: null});
 
+// this captures any future theme changes
 const InternalThemeConsumer = withTheme(
   compose(
     withSelector('appTheme', themeSelector),
@@ -40,8 +41,11 @@ const InternalThemeConsumer = withTheme(
   }),
 );
 
-export default props => (
-  <ThemeProvider>
+// need to set the initial theme
+const Provider = ({appTheme, ...props}) => (
+  <ThemeProvider theme={appTheme}>
     <InternalThemeConsumer {...props} />
   </ThemeProvider>
 );
+
+export default compose(withSelector('appTheme', themeSelector))(Provider);
