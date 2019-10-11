@@ -5,13 +5,13 @@ This library allows components composed with [@truefit/bach](https://github.com/
 ## Installation
 
 ```
-npm install @truefit/bach-rn-elements
+npm install @truefit/bach-rn-elements react-native-elements react-native-vector-icons
 ```
 
 or
 
 ```
-yarn add @truefit/bach-rn-elements
+yarn add @truefit/bach-rn-elements react-native-elements react-native-vector-icons
 ```
 
 ## Setup
