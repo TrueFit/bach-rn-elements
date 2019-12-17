@@ -1,7 +1,7 @@
 import {useMemo, useContext} from 'react';
 import {PROPS, generateConditionCode, isFunction} from '@truefit/bach';
 
-import {ThemeContext} from '../components/themeProvider';
+import {ThemeContext} from 'react-native-elements';
 
 import {styleConfig} from '../util/configureStyle';
 import {STYLES, THEME} from '../constants';
