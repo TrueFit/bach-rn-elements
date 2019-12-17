@@ -4,19 +4,22 @@
 //     this component abstracts that so you can just use redux
 
 import React from 'react';
-import {ThemeProvider} from 'react-native-elements';
+import {ThemeProvider, ThemeContext} from 'react-native-elements';
 
-import {compose, withEffect} from '@truefit/bach';
+import {compose, withContext, withEffect} from '@truefit/bach';
 import {withSelector} from '@truefit/bach-redux';
 
 import {themeSelector} from '../selectors';
 
 const InternalProvider = compose(
   withSelector('appTheme', themeSelector),
+  withContext(['updateTheme'], ThemeContext),
 
   withEffect(
     ({appTheme, updateTheme}) => {
-      updateTheme(appTheme);
+      if (updateTheme) {
+        updateTheme(appTheme);
+      }
     },
     ['appTheme'],
   ),
