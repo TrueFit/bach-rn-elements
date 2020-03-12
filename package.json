@@ -47,6 +47,7 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.0",
     "prettier": "^1.19.1",
+    "react": "^16.13.0",
     "react-native-elements": "^1.2.7",
     "react-native-vector-icons": "^6.6.0",
     "ts-node": "^8.6.2",

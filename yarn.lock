@@ -33,10 +33,10 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@truefit/bach@2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@truefit/bach/-/bach-2.0.0.tgz#71cc7aff6aff48c524f3813c0fc01fd0c0d072b3"
-  integrity sha512-V+72og19knWh6gmCENtuFd6CpJZafMsxAVqZ5M3DJlZQ2sjH5dy8wPfJx0do9u8pvq/ykZzVbGDij5WRuMdCDQ==
+"@truefit/bach@2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@truefit/bach/-/bach-2.0.1.tgz#18f9f74fc53d545f25c529dc50775e5330a0a39f"
+  integrity sha512-u5gmpbD/k0uo73DBEs0/66jfKdCAc12WhQ8mp21E18RPOd/+KJZyPXEJv7fbVpMYu6WuJbzgKszN4qTiXTBRMQ==
 
 "@types/color-name@^1.1.1":
   version "1.1.1"
@@ -71,10 +71,17 @@
     "@types/react" "*"
     "@types/react-native" "*"
 
-"@types/react-native@*", "@types/react-native@^0.61.20":
+"@types/react-native@*":
   version "0.61.20"
   resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.61.20.tgz#937d8ed9768bdfc982e785563c07b4905ba0fd1f"
   integrity sha512-EEtaP15gpDhpB1N8G3a+nWAzSa3HiLAZvfFkvczCluQXiB2vXAVJyxWls1i3Q9TERVWE3JbOuufgCY6bV1qTzw==
+  dependencies:
+    "@types/react" "*"
+
+"@types/react-native@^0.61.21":
+  version "0.61.21"
+  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.61.21.tgz#7b698d1a1a1b9f108af2573b931f3d57e66e8479"
+  integrity sha512-wdA3owsYZ0/eSBji12uh4rqRYfRWlQ3PNI1D5+cmpTfr5/+mdH1WXfFAcM+ncD+zUQW6EmyizHmjT+S31EmjNg==
   dependencies:
     "@types/react" "*"
 
@@ -1100,7 +1107,7 @@ lodash@^4.0.0, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.4:
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
 
-loose-envify@^1.4.0:
+loose-envify@^1.1.0, loose-envify@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.4.0.tgz#71ee51fa7be4caec1a63839f7e682d8132d30caf"
   integrity sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==
@@ -1429,6 +1436,15 @@ react-native-vector-icons@^6.6.0:
     lodash "^4.0.0"
     prop-types "^15.6.2"
     yargs "^13.2.2"
+
+react@^16.13.0:
+  version "16.13.0"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.13.0.tgz#d046eabcdf64e457bbeed1e792e235e1b9934cf7"
+  integrity sha512-TSavZz2iSLkq5/oiE7gnFzmURKZMltmi193rm5HEoUDAXpzT9Kzw6oNZnGoai/4+fUnm7FqS5dwgUL34TujcWQ==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.2"
 
 read-pkg-up@^2.0.0:
   version "2.0.0"
