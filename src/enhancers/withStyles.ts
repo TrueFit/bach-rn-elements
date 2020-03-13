@@ -23,7 +23,7 @@ export default <T>(
   const isFuncStyles = isFunction(componentStyles);
   const conditionCode = isFuncStyles ? generateConditionCode(conditions) : '';
 
-  const sharedStyleAlias = generateNewVariable();
+  const joinAlias = generateNewVariable();
   const componentStyleAlias = generateNewVariable();
   const themeContextAlias = generateNewVariable();
 
@@ -31,23 +31,30 @@ export default <T>(
     ? componentStyles
     : (): NamedStyles => componentStyles as NamedStyles;
 
+  // we need to lazy eval this
+  const join = (styles: NamedStyles): NamedStyles => ({
+    ...styleConfig.sharedStyle,
+    ...styles,
+  });
+
   return {
     dependencies: {
       useMemo,
       useContext,
       ThemeContext,
 
-      [sharedStyleAlias]: styleConfig.sharedStyle,
+      [joinAlias]: join,
       [componentStyleAlias]: componentStyleFunc,
     },
     initialize: `
       const ${themeContextAlias} = useContext(ThemeContext);
-      ${PROPS}.${THEME} = ${themeContextAlias}.theme;
+      const ${THEME} = ${themeContextAlias}.theme;
 
-      const ${STYLES} = useMemo(function() { 
-        const componentStyle = ${componentStyleAlias}(${PROPS});
-        
-        return Object.assign(${sharedStyleAlias}, componentStyle);
+      // needed to give access to the theme for the execution of the style func
+      ${PROPS}.${THEME} = ${THEME};
+
+      const ${STYLES} = useMemo(function() {
+        return ${joinAlias}(${componentStyleAlias}(${PROPS}));
       }, [${conditionCode}]);
     `,
     props: [STYLES, THEME],

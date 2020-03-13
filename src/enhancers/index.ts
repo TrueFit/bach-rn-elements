@@ -1,2 +1,3 @@
-export {default as withBadge} from './withBadge';
+/* eslint-disable import/prefer-default-export */
+
 export {default as withStyles} from './withStyles';
