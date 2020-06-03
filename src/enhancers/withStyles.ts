@@ -34,12 +34,10 @@ export default <T>(
   const themeContextAlias = generateNewVariable();
 
   // this lazy evals the styles so we can use prop values
-  const componentStyleFunc = generateLazyStyleFunc<T>(componentStyles);
-  const sharedStyleFunc = generateLazyStyleFunc<T>(styleConfig.sharedStyle);
-
   const joinStyles = (props: T): NamedStyles => {
-    const sharedStyles = sharedStyleFunc(props);
-    const styles = componentStyleFunc(props);
+    // we need to lazy eval the sharedStyle from config because of the typical launch sequence
+    const sharedStyles = generateLazyStyleFunc<T>(styleConfig.sharedStyle)(props);
+    const styles = generateLazyStyleFunc<T>(componentStyles)(props);
 
     return {
       ...sharedStyles,
