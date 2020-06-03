@@ -11,31 +11,41 @@ import {
 import {ThemeContext} from 'react-native-elements';
 
 import {styleConfig} from '../configureStyle';
-import {NamedStyles} from '../types';
+import {NamedStyles, LazyStyleFunc} from '../types';
 
 const STYLES = 'styles';
 const THEME = 'theme';
 
+const generateLazyStyleFunc = <T>(style: NamedStyles | LazyStyleFunc<T>): LazyStyleFunc<T> => {
+  if (isFunction(style)) {
+    return (style as unknown) as LazyStyleFunc<T>;
+  }
+
+  return () => style as NamedStyles;
+};
+
 export default <T>(
-  componentStyles: NamedStyles | ((t: T | undefined) => NamedStyles) = {},
+  componentStyles: NamedStyles | LazyStyleFunc<T> = {},
   conditions?: DependencyList<T>,
 ) => ({generateNewVariable}: EnhancerContext): EnhancerResult => {
-  const isFuncStyles = isFunction(componentStyles);
-  const conditionCode = isFuncStyles ? generateConditionCode(conditions) : '';
+  const conditionCode = generateConditionCode(conditions);
 
-  const joinAlias = generateNewVariable();
-  const componentStyleAlias = generateNewVariable();
+  const joinStyleAlias = generateNewVariable();
   const themeContextAlias = generateNewVariable();
 
-  const componentStyleFunc = isFuncStyles
-    ? componentStyles
-    : (): NamedStyles => componentStyles as NamedStyles;
+  // this lazy evals the styles so we can use prop values
+  const componentStyleFunc = generateLazyStyleFunc<T>(componentStyles);
+  const sharedStyleFunc = generateLazyStyleFunc<T>(styleConfig.sharedStyle);
 
-  // we need to lazy eval this
-  const join = (styles: NamedStyles): NamedStyles => ({
-    ...styleConfig.sharedStyle,
-    ...styles,
-  });
+  const joinStyles = (props: T): NamedStyles => {
+    const sharedStyles = sharedStyleFunc(props);
+    const styles = componentStyleFunc(props);
+
+    return {
+      ...sharedStyles,
+      ...styles,
+    };
+  };
 
   return {
     dependencies: {
@@ -43,18 +53,18 @@ export default <T>(
       useContext,
       ThemeContext,
 
-      [joinAlias]: join,
-      [componentStyleAlias]: componentStyleFunc,
+      [joinStyleAlias]: joinStyles,
     },
     initialize: `
+      // needed to give access to the theme for the execution of the style func
       const ${themeContextAlias} = useContext(ThemeContext);
       const ${THEME} = ${themeContextAlias}.theme;
-
-      // needed to give access to the theme for the execution of the style func
+      
       ${PROPS}.${THEME} = ${THEME};
 
+      // generate the styles
       const ${STYLES} = useMemo(function() {
-        return ${joinAlias}(${componentStyleAlias}(${PROPS}));
+        return ${joinStyleAlias}(${PROPS});
       }, [${conditionCode}]);
     `,
     props: [STYLES, THEME],
