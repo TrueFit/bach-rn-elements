@@ -5,10 +5,10 @@ import {StringKeyMap} from '@truefit/bach';
 
 export type WithTheme = {theme: Theme};
 
-export type StyleConfig = {
-  sharedStyle: NamedStyles | ((props: any) => NamedStyles) | (() => NamedStyles);
-};
-
 export type AllStyleProp = StyleProp<ViewStyle | TextStyle | ImageStyle>;
 export type NamedStyles = StringKeyMap<AllStyleProp>;
 export type LazyStyleFunc<T> = (t: T) => NamedStyles | (() => NamedStyles);
+
+export type StyleConfig = {
+  sharedStyle: NamedStyles | ((props: any) => NamedStyles) | (() => NamedStyles);
+};
